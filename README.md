@@ -2,7 +2,7 @@
 [SpaceFusion](https://arxiv.org/abs/1902.11205) is a learning paradigm proposed to align and structure the unstructured latent spaces learned by different models trained over different datasets. Of particular interest is its application to neural conversation modelling, where space fusion can be used to jointly optimize the relevance and diversity of generated responses. 
 
 ### News
-* A Keras implementation is provided [here](https://github.com/golsun/SpaceFusion/blob/master/v1)
+* A Keras implementation is provided [here](https://github.com/golsun/SpaceFusion/blob/master/src)
 * We published a [blog](https://www.microsoft.com/en-us/research/blog/spacefusion-structuring-the-unstructured-latent-space-for-conversational-ai/) to discuss the intuition and implication
 
 ![](https://github.com/golsun/SpaceFusion/blob/master/fig/intro_fig.PNG)
