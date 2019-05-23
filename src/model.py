@@ -58,8 +58,8 @@ class ModelWrapper:
 
 		if self.new and os.path.exists(self.fld):
 			print('%s\nalready exists, do you want to delete the folder? (y/n)'%self.fld)
-			#ans = input()
-			if 1:# ans.lower() == 'y':
+			ans = input()
+			if ans.lower() == 'y':
 				shutil.rmtree(self.fld)
 				time.sleep(2)	# otherwise the following makedirs may fail
 				print('fld deleted')
@@ -323,7 +323,7 @@ class Seq2SeqBase(ModelWrapper):
 	def dialog(self, input_text, prefix=None, method='greedy', beam_width=10):
 		if prefix is None:
 			prefix = self.prefix[0]
-		source_seq = self.dataset.text2seq(input_text)
+		source_seq = self.dataset.txt2seq(input_text)
 		latent = self.model_encoder[prefix].predict(np.atleast_2d(source_seq))
 		if method=='greedy':
 			return self.decoder_ar.predict(latent)
@@ -331,6 +331,9 @@ class Seq2SeqBase(ModelWrapper):
 			return self.decoder_ar.predict(latent, sampling=True)
 		elif method=='beam':
 			return self.decoder_ar.predict_beam(latent, beam_width=beam_width)
+		elif method=='rand':
+			latent = rand_latent(latent, 1.5, limit=True)
+			return self.decoder_ar.predict(latent)
 		else:
 			raise ValueError
 
@@ -606,7 +609,7 @@ class MTask(Seq2SeqBase):
 
 
 	def train_a_load(self, batch_size, batch_per_load):
-		encoder_input_data, decoder_input_data, decoder_target_data, _, _ = \
+		encoder_input_data, decoder_input_data, decoder_target_data, source_texts, target_texts = \
 					self.dataset.load_data('train', batch_size * batch_per_load)
 
 		n_sample = decoder_input_data.shape[0]

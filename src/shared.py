@@ -15,22 +15,14 @@ EOS_token = '_EOS_'
 UNK_token = '_UNK_'
 
 hostname = socket.gethostname()
-SKIP_VIS = hostname not in ['MININT-3LHNLKS', 'xiag-0228']
+SKIP_VIS = False
 FIT_VERBOSE = 1
 
 if not SKIP_VIS:
 	import matplotlib.pyplot as plt
 
-if hostname in ['MININT-3LHNLKS', 'xiag-0228']:
-	DATA_PATH = "d:/data"
-	OUT_PATH = 'out'
-elif os.getenv('PT_DATA_DIR') is not None:
-	DATA_PATH = os.getenv('PT_DATA_DIR') + '/data'
-	OUT_PATH  = os.getenv('PT_OUTPUT_DIR') + '/out'
-	FIT_VERBOSE = 0
-else:
-	DATA_PATH = 'data'
-	OUT_PATH = 'out'
+DATA_PATH = 'data'
+OUT_PATH = 'out'
 
 print('@'*20)
 print('hostname:  %s'%hostname)

@@ -95,7 +95,7 @@ def clusters(s2s, model_name, fld_save, D=2):
 	AUTO = 'auto' in s2s.model_encoder
 
 	print('building data...')
-	encoder_input_data, _, _, source_texts, target_texts = s2s.dataset.load_data('test', max_n=n, check_src=True)
+	encoder_input_data, _, _, source_texts, target_texts = s2s.dataset.load_data('test', max_n=n, check_src=False)
 
 	extra_dial = []
 	extra_auto = []
