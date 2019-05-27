@@ -27,6 +27,17 @@ Tokenization functions and other preprocessing tools can be found [here](https:/
 * `dataset.py` defines the data feeder
 * `shared.py` defines the default hyperparameters
 
+## Citation
+Please cite our NAACL paper if this repo inspired your work :)
+```
+@article{gao2019spacefusion,
+  title={Jointly Optimizing Diversity and Relevance in Neural Response Generation},
+  author={Gao, Xiang and Lee, Sungjin and Zhang, Yizhe and Brockett, Chris and Galley, Michel and Gao, Jianfeng and Dolan, Bill},
+  journal={NAACL-HLT 2019},
+  year={2019}
+}
+```
 
 ![](https://github.com/golsun/SpaceFusion/blob/master/fig/intro_fig.PNG)
+
 
