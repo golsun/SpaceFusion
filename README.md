@@ -1,5 +1,5 @@
 # SpaceFusion
-[SpaceFusion](https://arxiv.org/abs/1902.11205) is a regularized multi-task learning paradigm proposed to align and structure the unstructured latent spaces learned by different models trained over different datasets. Of particular interest is its application to neural conversation modelling, where SpaceFusion is used to jointly optimize the relevance and diversity of generated responses. 
+SpaceFusion is a regularized multi-task learning paradigm proposed to align and structure the unstructured latent spaces learned by different models trained over different datasets. Of particular interest is its application to neural conversation modelling, where SpaceFusion is used to [jointly optimize the relevance and diversity of generated responses](https://arxiv.org/abs/1902.11205). 
 
 ### News
 * We published a [blog](https://www.microsoft.com/en-us/research/blog/spacefusion-structuring-the-unstructured-latent-space-for-conversational-ai/) to discuss the intuition and implication
