@@ -1,6 +1,6 @@
 This is an example of the data files. 
 
-Please provide `train.num`, `vali.num`, `test.num` and `vocab.txt`.
+The model requires `train.num`, `vali.num`, `test.num` and `vocab.txt`.
 * `vocab.txt` is the vocab list of tokens. The first three token must be `_SOS_`, `_EOS_` and `_UNK_`, which represent "start of sentence", "end of sentence", and "unknown token".
 * For these `*.num` files, the format for each line is `src \t tgt`, where `\t` is the tab delimiter, `src` is the context, and `tgt` is the response. 
 
