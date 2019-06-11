@@ -19,7 +19,7 @@ Tokenization functions and other preprocessing tools can be found [here](https:/
 ## Usage
 * To train a SpaceFusion model: `python src/main.py mtask train --data_name=toy`
 * To visualize the learned latent space: `python src/vis.py --data_name=toy`
-* To interact with the trained model: `python src/main.py interact_rand --data_name=toy`
+* To interact with the trained model: `python src/main.py mtask interact_rand --data_name=toy`
 
 ## Discription
 * `main.py` is the main file
