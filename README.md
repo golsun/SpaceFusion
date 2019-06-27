@@ -11,7 +11,7 @@ the code is tested using Python 3.6 and Keras 2.2.4
 
 ## Dataset
 * Reddit data is downloaded from a [third party](http://files.pushshift.io/reddit/comments/). However, as we don't own the data, we cannot release it here. But [this script](https://github.com/mgalley/DSTC7-End-to-End-Conversation-Modeling/tree/master/data_extraction) can be used to process the raw data.
-* Switchboard data is downloaded from [this repo](https://github.com/snakeztc/NeuralDialog-CVAE)
+* Switchboard data is downloaded from [this repo](https://github.com/snakeztc/NeuralDialog-CVAE/tree/master/data) and we provided a [script](https://github.com/golsun/SpaceFusion/blob/master/data/switchboard.py) to process that version to our format.
 * We provided a [toy dataset](https://github.com/golsun/SpaceFusion/blob/master/data/toy) in this repo for debugging.
 
 Tokenization functions and other preprocessing tools can be found [here](https://github.com/golsun/NLP-tools). 
