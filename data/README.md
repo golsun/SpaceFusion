@@ -13,10 +13,10 @@ by the [text2num](https://github.com/golsun/NLP-tools/blob/master/data_prepare.p
 ## Toy dataset
 A [toy dataset](https://github.com/golsun/SpaceFusion/tree/master/data/toy) is provied as an example following the format described above.
 
-# Switchboard dataset
+## Switchboard dataset
 Switchboard data is downloaded from [this repo](https://github.com/snakeztc/NeuralDialog-CVAE/tree/master/data) and we provided a [script](https://github.com/golsun/SpaceFusion/blob/master/data/switchboard.py) to process that version to our format.
 
-# Reddit dataset
+## Reddit dataset
 * Please first download `bz2` files from a third party, including the [comments](http://files.pushshift.io/reddit/comments/) and [submissions](http://files.pushshift.io/reddit/submissions/). For the SpaceFusion paper, we only used these from year 2011, but you may generate your own dataset with more/different years
 * Then, please [this script](https://github.com/golsun/SpaceFusion/blob/master/data/reddit.py) to extract conversations from the raw bz2 files in the following steps for a given month `YYYY-MM`. E.g. for 2011 Jan
 ```
