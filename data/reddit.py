@@ -9,6 +9,7 @@ import argparse
 import traceback
 import json
 import bz2
+from nltk.tokenize import TweetTokenizer
 
 def makedirs(fld):
 	if not os.path.exists(fld):
@@ -23,7 +24,7 @@ url_str = '__url__'
 parser = argparse.ArgumentParser()
 
 parser.add_argument("dump_name", help="YYYY-MM, dumped files to be loaded")
-parser.add_argument("--fld_bz2", default='d:/data/reddit/bz2')
+parser.add_argument("--fld_bz2", default='d:/data/reddit/bz2')	# the folder where you saved bz2 files
 parser.add_argument("--max_len", default=30, type=int)
 parser.add_argument("--max_len_type", default='w')		# w for words, c for chars
 parser.add_argument("--min_depth", default=2, type=int)
