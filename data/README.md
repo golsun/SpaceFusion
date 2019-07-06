@@ -10,7 +10,8 @@ python data/reddit.py 2011-01 --task=ref --fld_bz2=[where/you/saved/bz2/files]
 to generate the dataset used in the SpaceFusion paper, please use the default parameters.
 
 ## Switchboard
-Switchboard data is downloaded from [this repo](https://github.com/snakeztc/NeuralDialog-CVAE/tree/master/data) and we provided a [script](https://github.com/golsun/SpaceFusion/blob/master/data/switchboard.py) to process that version to our format.
+* Please first download Switchboard data from [this repo](https://github.com/snakeztc/NeuralDialog-CVAE/tree/master/data) 
+* Then, use [this script](https://github.com/golsun/SpaceFusion/blob/master/data/switchboard.py) to process that version to our format.
 
 ## Data format
 The model requires `train.num`, `vali.num`, `test.num` and `vocab.txt`.
