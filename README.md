@@ -3,7 +3,7 @@ SpaceFusion is a regularized multi-task learning paradigm proposed to align and 
 
 
 More documents:
-* our paper at NAACL'19 [PDF](https://arxiv.org/abs/1902.11205). 
+* our [paper](https://arxiv.org/abs/1902.11205) at NAACL'19 (long, oral). 
 * The [slides](https://github.com/golsun/SpaceFusion/blob/master/slides.pdf) presented at NAACL'19.
 * We published a [MSR blog](https://www.microsoft.com/en-us/research/blog/spacefusion-structuring-the-unstructured-latent-space-for-conversational-ai/) to discuss the intuition and implication
 
