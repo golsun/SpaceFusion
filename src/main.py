@@ -108,6 +108,27 @@ def run_s2s(name, mode, args):
 			for result in results:
 				print('%.2f'%result[0] + '\t' + result[1])
 
+	elif mode == 'test':
+		r = 1.5
+		lines = []
+		prev = None
+		if args.path_test == '':
+			path_test = fld_data + '/test.txt'
+		else:
+			path_test = args.path_test
+		for line in open(path_test, encoding='utf-8'):
+			src, _ = line.strip('\n').split('\t')
+			if src == prev:
+				continue
+			for _ in range(100):
+				results = s2s.dialog(src, prefix='dial', method='rand')
+				logP, hyp = results[0]
+				lines.append('\t'.join([src, hyp, '%.4f'%logP]))
+			prev = src
+
+		with open(fld + '/test_out.tsv', 'w', encoding='utf-8') as f:
+			f.write('\n'.join(lines))
+
 
 	elif 'summary' == mode:
 		print(s2s.model.summary())
@@ -149,6 +170,7 @@ def get_model_fld(args):
 if __name__ == '__main__':
 	parser.add_argument('name')
 	parser.add_argument('mode')
+	parser.add_argument('--path_test', type=str)
 	parser.add_argument('--skip', type=int, default=0)
 	args = parser.parse_args()
 	run_s2s(args.name, args.mode, args)
