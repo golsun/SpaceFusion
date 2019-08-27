@@ -116,15 +116,21 @@ def run_s2s(name, mode, args):
 			path_test = fld_data + '/test.txt'
 		else:
 			path_test = args.path_test
+		print('path_test = '+path_test)
+		n_src = 0
 		for line in open(path_test, encoding='utf-8'):
 			src, _ = line.strip('\n').split('\t')
 			if src == prev:
 				continue
+			n_src += 1
+			if n_src == 30:
+				break
+			print('decoding src %i'%n_src)
 			for _ in range(100):
-				results = s2s.dialog(src, prefix='dial', method='rand')
-				logP, hyp = results[0]
-				lines.append('\t'.join([src, hyp, '%.4f'%logP]))
+				logP, hyp = s2s.dialog(src, prefix='dial', method='rand')
+				lines.append('\t'.join([src, hyp.replace(EOS_token,''), '%.4f'%logP]))
 			prev = src
+
 
 		with open(fld + '/test_out.tsv', 'w', encoding='utf-8') as f:
 			f.write('\n'.join(lines))
@@ -170,7 +176,7 @@ def get_model_fld(args):
 if __name__ == '__main__':
 	parser.add_argument('name')
 	parser.add_argument('mode')
-	parser.add_argument('--path_test', type=str)
+	parser.add_argument('--path_test', default='', type=str)
 	parser.add_argument('--skip', type=int, default=0)
 	args = parser.parse_args()
 	run_s2s(args.name, args.mode, args)
