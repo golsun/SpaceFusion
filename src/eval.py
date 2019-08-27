@@ -109,3 +109,14 @@ def naacl_eval(path_hyp, path_ref, wt_len=0, len_only=False):
 
     with open(path_out, 'w', encoding='utf-8') as f:
         f.write('\n'.join(lines))
+
+
+if __name__ == '__main__':
+	import argparse
+	parser = argparse.ArgumentParser()
+	parser.add_argument('--path_hyp', type=str)
+	parser.add_argument('--path_ref', type=str)
+	parser.add_argument('--wt_len', type=float, default=0)
+	parser.add_argument('-len_only', action='restore_true')
+	args = parser.parse_args()
+	naacl_eval(args.path_hyp, args.path_ref, wt_len=args.wt_len, len_only=args.len_only)

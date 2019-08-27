@@ -1,11 +1,11 @@
 # SpaceFusion
-SpaceFusion is a regularized multi-task learning paradigm proposed to align and structure the unstructured latent spaces learned by different models trained over different datasets. Of particular interest is its application to neural conversation modelling, where SpaceFusion is used to jointly optimize the relevance and diversity of generated responses [NAACL-19](https://arxiv.org/abs/1902.11205). 
+SpaceFusion is a regularized multi-task learning paradigm proposed to align and structure the unstructured latent spaces learned by different models trained over different datasets. Of particular interest is its application to neural conversation modelling, where SpaceFusion is used to jointly optimize the relevance and diversity of generated responses.
 
-### News
-* Provided [scripts](https://github.com/golsun/SpaceFusion/tree/master/data) to generate **Switchboard** and **Reddit** dataset.
-* The [slides](https://github.com/golsun/SpaceFusion/blob/master/slides.pdf) presented at NAACL-HLT 2019 is available.
-* We published a [blog](https://www.microsoft.com/en-us/research/blog/spacefusion-structuring-the-unstructured-latent-space-for-conversational-ai/) to discuss the intuition and implication
-* A Keras [implementation](https://github.com/golsun/SpaceFusion/tree/master/src) is provided
+
+More documents:
+* our paper at NAACL'19 [PDF](https://arxiv.org/abs/1902.11205). 
+* The [slides](https://github.com/golsun/SpaceFusion/blob/master/slides.pdf) presented at NAACL'19.
+* We published a [MSR blog](https://www.microsoft.com/en-us/research/blog/spacefusion-structuring-the-unstructured-latent-space-for-conversational-ai/) to discuss the intuition and implication
 
 ## Requirement
 the code is tested using Python 3.6 and Keras 2.2.4
@@ -17,6 +17,8 @@ We provided [scripts](https://github.com/golsun/SpaceFusion/tree/master/data) to
 * To train a SpaceFusion model: `python src/main.py mtask train --data_name=toy`
 * To visualize the learned latent space: `python src/vis.py --data_name=toy`
 * To interact with the trained model: `python src/main.py mtask interact_rand --data_name=toy`
+* To generate hypotheses for testing with the trained model: `python src/main.py mtask test --data_name=toy`
+* To evaluate the generated hypotheses `python src/eval.py --path_hyp=? --path_ref=? --wt_len=?`, which outputs the precision, recall, and F1 as defined in the paper. You may want to first run this command with `-len_only` to find a proper `wt_len` that minimize the difference between the average length (number of tokens) of hypothesis and reference.
 
 ## Discription
 * `main.py` is the main file
