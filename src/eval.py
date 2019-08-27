@@ -52,7 +52,6 @@ def naacl_eval(path_hyp, path_ref, wt_len=0, len_only=False):
     ngrams = [1,2,3,4]
     sum_prec = dict([(ngram, 0) for ngram in ngrams])
     sum_recall = dict([(ngram, 0) for ngram in ngrams])
-    sum_f1 = dict([(ngram, 0) for ngram in ngrams])
     n = 0
     sum_Nr = 0
     sum_len_hyp = 0
