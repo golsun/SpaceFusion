@@ -60,7 +60,7 @@ def naacl_eval(path_hyp, path_ref, wt_len=0, len_only=False):
 
     header = ['src','Nr','len_hyp','len_ref']
     for ngram in ngrams:
-        header += ['prec%i'%ngram,'recall%i'%ngram,'f1_%i'%ngram]
+        header += ['prec%i'%ngram,'recall%i'%ngram]
     lines = ['\t'.join(header)]
 
     for src in d_hyp:
@@ -90,10 +90,11 @@ def naacl_eval(path_hyp, path_ref, wt_len=0, len_only=False):
                         mat[i_hyp, i_ref] = calc_nltk_bleu(refs[i_ref], hyps[i_hyp], max_ngram=ngram)
                     except ZeroDivisionError:
                         pass
-            sum_prec[ngram] += np.mean(np.max(mat, axis=1))
-            sum_recall[ngram] += np.mean(np.max(mat, axis=0))
-
-            line += ['%.4f'%prec, '%.4f'%recall, '%.4f'%f1]
+	    prec = np.mean(np.max(mat, axis=1))
+	    recall = np.mean(np.max(mat, axis=0))
+            sum_prec[ngram] += prec
+            sum_recall[ngram] += recall
+            line += ['%.4f'%prec, '%.4f'%recall]
         lines.append('\t'.join(line))
 
     print('sample#\t%i, avg ref# %.2f'%(n, sum_Nr/n))
