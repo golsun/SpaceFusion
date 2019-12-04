@@ -1,5 +1,5 @@
 # SpaceFusion
-code/data for the NAACL'19 paper [https://arxiv.org/abs/1902.11205](Jointly Optimizing Diversity and Relevance in Neural Response Generation)
+code/data for the NAACL'19 paper [Jointly Optimizing Diversity and Relevance in Neural Response Generation](https://arxiv.org/abs/1902.11205)
 
 SpaceFusion is a regularized multi-task learning paradigm proposed to align and structure the unstructured latent spaces learned by different models trained over different datasets. Of particular interest is its application to neural conversation modelling, where SpaceFusion is used to jointly optimize the relevance and diversity of generated responses.
 
