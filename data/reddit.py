@@ -351,7 +351,7 @@ def extract_multi_ref(fld_conv, dump_name, min_n_ref, max_n_ref=None):
 	for line in open(path_in, encoding='utf-8'):
 		n_tgt += 1
 		if n_tgt%1e4 == 0:
-			print('[ %s ] processed %.3fM lines, selected %.3fM'%(date, n_tgt/1e6, m_tgt/1e6))
+			print('[ %s ] processed %.3fM lines, selected %.3fM'%(dump_name, n_tgt/1e6, m_tgt/1e6))
 		src, tgt = line.split('\t')
 
 		if src != prev:
@@ -372,7 +372,7 @@ def extract_multi_ref(fld_conv, dump_name, min_n_ref, max_n_ref=None):
 			f.write('\n'.join(lines))
 
 	with open(fld_out + '/stat.tsv', 'a') as f:
-		f.write('\t'.join(map(str, [date, m_src, n_src, m_tgt, n_tgt])) + '\n')
+		f.write('\t'.join(map(str, [dump_name, m_src, n_src, m_tgt, n_tgt])) + '\n')
 
 
 fld_split = args.fld_bz2 + '/../split(%.1fM)/%s'%(args.split_size/1e6, args.dump_name)
@@ -384,4 +384,4 @@ if args.task == 'extract':
 elif args.task == 'conv':
 	build_conv(fld_split, fld_conv, args.dump_name)
 elif args.task == 'ref':
-	extract_multi_ref(fld_conv, dump_name, args.min_n_ref)
+	extract_multi_ref(fld_conv, args.dump_name, args.min_n_ref)
