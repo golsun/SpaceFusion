@@ -14,6 +14,7 @@ the code is tested using Python 3.6 and Keras 2.2.4
 
 ## Dataset
 We provided [scripts](https://github.com/golsun/SpaceFusion/tree/master/data) to generate Switchboard and Reddit dataset as well as a [toy dataset](https://github.com/golsun/SpaceFusion/blob/master/data/toy) in this repo for debugging.
+Please check [here](https://github.com/golsun/SpaceFusion/blob/master/data/README.md) for more details.
 
 ## Usage
 * To train a SpaceFusion model: `python src/main.py mtask train --data_name=toy`
