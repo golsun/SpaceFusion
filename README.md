@@ -13,7 +13,8 @@ More documents:
 the code is tested using Python 3.6 and Keras 2.2.4
 
 ## Dataset
-We provided [scripts](https://github.com/golsun/SpaceFusion/tree/master/data) to generate Switchboard and Reddit dataset as well as a [toy dataset](https://github.com/golsun/SpaceFusion/blob/master/data/toy) in this repo for debugging.
+We provided scripts to generate [Reddit](https://github.com/golsun/SpaceFusion/blob/master/data/reddit.py) and process [Switchboard](https://github.com/golsun/SpaceFusion/blob/master/data/switchboard.py) datasets as well as a [toy dataset](https://github.com/golsun/SpaceFusion/blob/master/data/toy) in this repo for debugging.
+
 Please check [here](https://github.com/golsun/SpaceFusion/blob/master/data/README.md) for more details.
 
 ## Usage
