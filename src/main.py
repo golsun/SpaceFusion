@@ -82,7 +82,7 @@ def run_s2s(name, mode, args):
 			batch_per_load = 1
 		else:
 			batch_per_load = 50
-		s2s.train(batch_size, args.epochs, batch_per_load, skip=args.skip, epoch_init=args.epoch_load)
+		s2s.train(args.batch_size, args.epochs, batch_per_load, skip=args.skip, epoch_init=args.epoch_load)
 
 	elif 'interact' in mode:
 		beam_width = None
