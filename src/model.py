@@ -401,7 +401,7 @@ class Seq2Seq(Seq2SeqBase):
 				decoder_outputs)					# shifted ground-truth sentences 
 
 		self._compile()
-		self.plot_model()
+		#self.plot_model()
 
 
 	def build_model_test(self):
@@ -588,7 +588,7 @@ class MTask(Seq2SeqBase):
 		# models
 		self.model = Model(inputs, outputs)
 		self._compile(loss_weights=self.loss_weights)
-		self.plot_model()
+		#self.plot_model()
 
 
 
