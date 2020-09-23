@@ -33,7 +33,6 @@ print('@'*20)
 DECODER_LOSS = 'categorical_crossentropy'
 
 max_seq_len = 32
-batch_size = 256
 max_num_sample = None
 max_num_token = None
 
@@ -48,6 +47,7 @@ parser.add_argument('--token_embed_dim', type=int, default=128)
 parser.add_argument('--rnn_units', type=int, default=128)
 parser.add_argument('--encoder_depth', type=int, default=2)
 parser.add_argument('--decoder_depth', type=int, default=2)
+parser.add_argument('--batch_size', type=int, default=256)
 parser.add_argument('--dropout', type=float, default=0.)
 parser.add_argument('--skip_perc', type=float, default=0.)
 parser.add_argument('--stddev', type=float, default=0.1)
