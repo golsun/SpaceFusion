@@ -121,9 +121,10 @@ def run_s2s(name, mode, args):
 					lines.append('\t'.join([src, hyp.replace(EOS_token,''), '%.4f'%logP]))
 			prev = src
 
-		with open(path_test + '.%s.tsv'%args.method, 'w', encoding='utf-8') as f:
+		path_out = path_test + '.%s.tsv'%args.method
+		with open(path_out, 'w', encoding='utf-8') as f:
 			f.write('\n'.join(lines))
-
+		print('saved to '+path_out)
 
 	elif 'summary' == mode:
 		print(s2s.model.summary())
