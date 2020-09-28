@@ -3,7 +3,6 @@ from tf_lib import *
 from dataset import *
 from model import *
 
-
 """
 AUTHOR: Xiang Gao (xiag@microsoft.com) at Microsoft Research
 """
@@ -51,7 +50,7 @@ def run_s2s(name, mode, args):
 				path_word2vec=path_word2vec)
 	else:
 		raise ValueError
-
+	
 	if mode not in ['train', 'summary']:
 		if args.epoch_load == 0:
 			restore_path = args.restore
@@ -84,32 +83,19 @@ def run_s2s(name, mode, args):
 			batch_per_load = 50
 		s2s.train(args.batch_size, args.epochs, batch_per_load, skip=args.skip, epoch_init=args.epoch_load)
 
-	elif 'interact' in mode:
-		beam_width = None
-		if '_' not in mode:
-			method = 'greedy'
-		else:
-			param = mode.split('_')[1]
-			if param != 'rand':
-				method = 'beam'
-				beam_width = int(param)
-			else:
-				method = 'rand'
-		print(method)
-
+	elif mode == 'interact':
 		while True:
 			print('\n---- please input ----')
 			input_text = input()
 			if input_text == '':
 				break
-			results = s2s.dialog(input_text, prefix='dial', method=method, beam_width=beam_width)
+			results = s2s.dialog(input_text, prefix='dial', method=args.method, beam_width=args.beam)
 			if method != 'beam':
 				results = [results]
 			for result in results:
 				print('%.2f'%result[0] + '\t' + result[1])
 
 	elif mode == 'test':
-		r = 1.5
 		lines = []
 		prev = None
 		if args.path_test == '':
@@ -117,22 +103,25 @@ def run_s2s(name, mode, args):
 		else:
 			path_test = args.path_test
 		print('path_test = '+path_test)
+		n_hyp = args.n_hyp if args.method == 'rand' else 1
 		n_src = 0
 		for line in open(path_test, encoding='utf-8'):
 			src, _ = line.strip('\n').split('\t')
 			if src == prev:
 				continue
 			n_src += 1
-			if n_src == 30:
+			if n_src == args.max_n_src:
 				break
 			print('decoding src %i'%n_src)
-			for _ in range(100):
-				logP, hyp = s2s.dialog(src, prefix='dial', method='rand')
-				lines.append('\t'.join([src, hyp.replace(EOS_token,''), '%.4f'%logP]))
+			for _ in range(n_hyp):
+				results = s2s.dialog(src, prefix='dial', method=args.method, beam_width=args.beam)
+				if args.method != 'beam':
+					results = [results]
+				for logP, hyp in results:
+					lines.append('\t'.join([src, hyp.replace(EOS_token,''), '%.4f'%logP]))
 			prev = src
 
-
-		with open(fld + '/test_out.tsv', 'w', encoding='utf-8') as f:
+		with open(path_test + '.%s.tsv'%args.method, 'w', encoding='utf-8') as f:
 			f.write('\n'.join(lines))
 
 
@@ -178,6 +167,10 @@ if __name__ == '__main__':
 	parser.add_argument('mode')
 	parser.add_argument('--path_test', default='', type=str)
 	parser.add_argument('--skip', type=int, default=0)
+	parser.add_argument('--method', type=str, default='rand')
+	parser.add_argument('--beam', type=int, default=10)
+	parser.add_argument('--n_hyp', type=int, default=100)
+	parser.add_argument('--max_n_src', type=int, default=-1)
 	args = parser.parse_args()
 	run_s2s(args.name, args.mode, args)
 
